@@ -19,8 +19,8 @@ public class test {
 
             while (rs.next())
                 System.out.println(rs.getString("name"));
-        }catch (Exception ef){
-            ef.printStackTrace();
+        }catch (Exception ae){
+            ae.printStackTrace();
         }
     }
 }
