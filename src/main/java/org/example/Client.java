@@ -15,7 +15,7 @@ public class Client extends Person {
             if (this.money >= room.getPrice()) {
                 this.room = room;
                 this.money -= room.getPrice();
-                System.out.println(this.getName() + " has booked " + room + ". Remaining money: " + this.money);
+                System.out.println(this.getName() + " has booked. " + room + ". Remaining money: " + this.money);
                 return;
             }
         }

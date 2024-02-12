@@ -18,6 +18,6 @@ public class Staff extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + ", Position: " + position;
+        return super.toString() + ",. Position: " + position;
     }
 }
