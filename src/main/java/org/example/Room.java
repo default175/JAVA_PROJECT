@@ -27,7 +27,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room Type: " + type + ", .Bed Type: " + bedType + ", Price: " + price;
+        return "Room Type: " + type + ", Bed Type: " + bedType + ", Price: " + price;
     }
 
 
