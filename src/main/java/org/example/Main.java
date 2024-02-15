@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Client client = new Client("John Doe", 50.0);
+        Client client = new Client("John Doe", 500.0);
         Staff staff1 = new Staff("Alice Johnson", "Waiter");
         Staff staff2 = new Staff("Bob Smith", "Chef");
 
@@ -22,7 +22,7 @@ public class Main {
 
 
 
-        String url = "jdbc:mysql://localhost:5432/postqres";
+        String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
         String password = "123";
 
