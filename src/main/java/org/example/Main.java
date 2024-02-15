@@ -11,29 +11,32 @@ public class Main {
 
 
         Client client = new Client("John Doe", 500.0);
-        Client client2 = new Client("Maks Erlin", 600.0);
-        Staff staff1 = new Staff("Alice Johnson", "Waiter");
-        Staff staff2 = new Staff("Bob Smith", "Chef");
 
-        Room[] allRooms = Room.getAllRooms();
-        client.chooseRoom(allRooms);
-        client2.chooseRoom(allRooms);
 
-        System.out.println(staff1);
-        System.out.println(staff2);
+
+        Staff staff1 = new Staff("Alice Johnson", "Waiter", 15.0);
+        Staff staff2 = new Staff("Bob Smith", "Chef", 20.0);
+
+
+        staff1.addHoursWorked(40);
+        staff2.addHoursWorked(45);
+
+
+        staff1.paySalary();
+        staff2.paySalary();
 
 
 
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = "olzhas06";
+        String password = "3789";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 
 
             addClientToDatabase(connection, client);
-            addClientToDatabase(connection, client2);
+            bookTheRoom(connection,client);
 
             addStaffToDatabase(connection, staff1);
             addStaffToDatabase(connection, staff2);
@@ -61,4 +64,14 @@ public class Main {
         statement.executeUpdate();
         System.out.println("Staff added to the database: " + staff.getName());
     }
+
+    public static void bookTheRoom(Connection connection, Client client) throws SQLException{
+        Room[] allRooms = Room.getAllRooms();
+        String sql = "update room set booked=? where price=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, client.getName());
+        statement.setInt(2, Integer.parseInt(Integer.toString(client.chooseRoom(allRooms).getPrice())));
+        statement.executeUpdate();
+    }
+
 }

@@ -11,9 +11,9 @@ public class Room {
 
     private Type type;
     private BedType bedType;
-    private double price;
+    private int price;
 
-    public Room(Type type, BedType bedType, double price) {
+    public Room(Type type, BedType bedType, int price) {
         this.type = type;
         this.bedType = bedType;
         this.price = price;
@@ -21,7 +21,7 @@ public class Room {
 
 
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
