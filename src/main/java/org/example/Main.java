@@ -11,11 +11,13 @@ public class Main {
 
 
         Client client = new Client("John Doe", 500.0);
+        Client client2 = new Client("Maks Erlin", 600.0);
         Staff staff1 = new Staff("Alice Johnson", "Waiter");
         Staff staff2 = new Staff("Bob Smith", "Chef");
 
         Room[] allRooms = Room.getAllRooms();
         client.chooseRoom(allRooms);
+        client2.chooseRoom(allRooms);
 
         System.out.println(staff1);
         System.out.println(staff2);
@@ -24,13 +26,14 @@ public class Main {
 
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = "123";
+        String password = "olzhasbratan";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 
 
             addClientToDatabase(connection, client);
+            addClientToDatabase(connection, client2);
 
             addStaffToDatabase(connection, staff1);
             addStaffToDatabase(connection, staff2);
