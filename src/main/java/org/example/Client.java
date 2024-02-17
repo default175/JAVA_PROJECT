@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class Client extends Person {
     Scanner sc = new Scanner(System.in);
 
-    private double money;
+    private int money;
     private Room room;
 
-    public Client(String name, double money) {
+    public Client(String name, int money) {
         super(name);
         this.money = money;
     }

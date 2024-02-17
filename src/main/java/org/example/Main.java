@@ -4,18 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
 
-
-        Client client = new Client("John Doe", 500.0);
-
+        Scanner sc = new Scanner(System.in);
 
 
-        Staff staff1 = new Staff("Alice Johnson", "Waiter", 15.0);
-        Staff staff2 = new Staff("Bob Smith", "Chef", 20.0);
+        Client client = new Client("John Doe", 500);
+
+
+
+        Staff staff1 = new Staff("Alice Johnson", "Waiter", 15);
+        Staff staff2 = new Staff("Bob Smith", "Chef", 20);
 
 
         staff1.addHoursWorked(40);
@@ -29,7 +32,7 @@ public class Main {
 
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = "3789";
+        String password = "123";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
@@ -57,10 +60,11 @@ public class Main {
     }
 
     public static void addStaffToDatabase(Connection connection, Staff staff) throws SQLException {
-        String sql = "INSERT INTO staff (name, position) VALUES (?, ?)";
+        String sql = "INSERT INTO staff (name, position, salary) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, staff.getName());
         statement.setString(2, staff.getPosition());
+        statement.setInt(3, Integer.parseInt(Integer.toString(staff.paySalary())));
         statement.executeUpdate();
         System.out.println("Staff added to the database: " + staff.getName());
     }

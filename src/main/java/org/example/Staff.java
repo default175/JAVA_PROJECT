@@ -1,10 +1,10 @@
 package org.example;
 public class Staff extends Person {
     private String position;
-    private double hourlyRate;
+    private int hourlyRate;
     private int hoursWorked;
 
-    public Staff(String name, String position, double hourlyRate) {
+    public Staff(String name, String position, int hourlyRate) {
         super(name);
         this.position = position;
         this.hourlyRate = hourlyRate;
@@ -22,10 +22,11 @@ public class Staff extends Person {
     }
 
 
-    public void paySalary() {
-        double salary = hourlyRate * hoursWorked;
+    public int paySalary() {
+        int salary = this.hourlyRate * this.hoursWorked;
         System.out.println(this.getName() + " earned a salary of: $" + salary);
-        hoursWorked = 0; // Сброс количества отработанных часов
+        this.hoursWorked = 0;
+        return salary;
     }
 
     @Override
