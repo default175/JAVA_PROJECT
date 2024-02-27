@@ -1,6 +1,10 @@
+// Represents a person with a name.
 package org.example;
+import lombok.*;
+
+@Getter @Setter
 public class Person {
-    protected String name;
+    public String name;
 
     public Person(String name) {
         this.name = name;

@@ -1,10 +1,10 @@
 package org.example;
-
-public class Room {
+import  lombok.*;
+@Getter @Setter
+class Room {
     public enum Type {
         ECONOMY, STANDARD, ENHANCED_STANDARD, JUNIOR_SUITE, SUITE
     }
-
     public enum BedType {
         SINGLE, DOUBLE
     }
@@ -19,18 +19,6 @@ public class Room {
         this.price = price;
     }
 
-
-
-    public int getPrice() {
-        return price;
-    }
-
-    @Override
-    public String toString() {
-        return "Room Type: " + type + ", Bed Type: " + bedType + ", Price: " + price;
-    }
-
-
     public static Room[] getAllRooms() {
         return new Room[]{
                 new Room(Type.ECONOMY, BedType.SINGLE, 50),
@@ -44,5 +32,10 @@ public class Room {
                 new Room(Type.SUITE, BedType.SINGLE, 300),
                 new Room(Type.SUITE, BedType.DOUBLE, 350)
         };
+    }
+
+    @Override
+    public String toString() {
+        return "Room Type: " + type + ", Bed Type: " + bedType + ", Price: " + price;
     }
 }
