@@ -1,5 +1,4 @@
 package org.example;
-
 import lombok.*;
 
 @Getter @Setter
@@ -20,11 +19,15 @@ public class Staff extends Person implements User {
         System.out.println(this.getName() + " has now worked " + this.hoursWorked + " hours.");
     }
 
-    public void paySalary() {
+    public double paySalary() {
         double salary = hourlyRate * hoursWorked;
         System.out.println(this.getName() + " earned a salary of: $" + salary);
         hoursWorked = 0; // Resetting the number of hours worked
+        return salary;
     }
+
+
+
 
     @Override
     public String toString() {

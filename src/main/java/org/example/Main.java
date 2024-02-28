@@ -17,7 +17,7 @@ public class Main {
 
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = "3789";
+        String password = "123";
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             addClientToDatabase(connection, client);
@@ -44,10 +44,11 @@ public class Main {
     }
     // Adds a staff to the database
     public static void addStaffToDatabase(Connection connection, Staff staff) throws SQLException {
-        String sql = "INSERT INTO staff (name, position) VALUES (?, ?)";
+        String sql = "INSERT INTO staff (name, position,salary) VALUES (?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, staff.getName());
             statement.setString(2, staff.getPosition());
+            statement.setDouble(3, staff.paySalary());
             statement.executeUpdate();
             System.out.println("Staff added to the database: " + staff.getName());
         }
